@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Accueil;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,48 @@ use App\Http\Controllers\Accueil;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/blog', function (Request $request) {
+
+
+    //ajouter un noveau article
+    // $post=new \App\Models\Post();
+    // $post->title="article numero 2";
+    // $post->Slug="mon second arcticle";
+    // $post->content="mon contenu 2";
+    // $post->save();
+
+    //modifier
+    // $post = \App\Models\Post::find(1);
+    // $post->title="article numero ";
+    // $post-> save();
+
+    // $post = \App\Models\Post::create([
+    //     'title' => 'article numero 3',
+    //     'slug' =>'mon 3er article',
+    //     'content' =>'mon contenu 3'
+    // ]);
+    
+    // return $post;
+    // return \App\Models\Post::all(['id', 'title', 'content']);
+    // $post= \App\Models\Post::all();
+    // $post= \App\Models\Post::paginate();
+
+    // dd($post[0]->first());
+    // dd($post);
+
+    // return $post;
+
+    // $posts = new Post();
+    // $posts->title="article numero 6";
+    // $posts->Slug="mon 6er article";
+    // $posts->content="mon contenu 5er article";
+    // $posts->save();
+
+    $posts= Post::findOrFail(1);
+    return $posts;
+
 });
 
 
@@ -49,6 +92,7 @@ Route::get('/user/{produits}-{id}', function($id){
     ];
 });
 
+//groupage des routes
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         // Correspond à l'URL /admin/dashboard
