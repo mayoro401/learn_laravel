@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Accueil;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 
 /*
@@ -19,7 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', function (Request $request) {
+Route::get('/blog',[PostController::class, 'index']);
+
+// function (Request $request) {
 
 
     //ajouter un noveau article
@@ -56,10 +59,11 @@ Route::get('/blog', function (Request $request) {
     // $posts->content="mon contenu 5er article";
     // $posts->save();
 
-    $posts= Post::findOrFail(1);
-    return $posts;
+    // $posts= Post::findOrFail(1);
+    // return $posts;
 
-});
+// })
+
 
 
 Route::get('/user', function(){

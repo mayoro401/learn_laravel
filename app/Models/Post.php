@@ -12,5 +12,6 @@ class Post extends Model
         'title',
         'slug',
         'content',
+        'password',
     ];
 }
